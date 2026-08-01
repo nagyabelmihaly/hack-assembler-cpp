@@ -1,0 +1,57 @@
+---
+BasedOnStyle: Microsoft
+Language: Cpp
+Standard: c++20
+
+# Braces
+BreakBeforeBraces: Allman
+AllowShortBlocksOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
+
+# Indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+NamespaceIndentation: None
+AccessModifierOffset: -4
+IndentCaseLabels: true
+
+# Line length / wrapping
+ColumnLimit: 100
+BreakConstructorInitializers: BeforeColon
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+BinPackArguments: false
+BinPackParameters: false
+
+# Pointers / references bind to the variable name: int *p, not int* p
+PointerAlignment: Right
+ReferenceAlignment: Right
+
+# Spacing
+SpaceBeforeParens: ControlStatements
+SpaceAfterCStyleCast: true
+SpacesInAngles: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpaceBeforeAssignmentOperators: true
+
+# Includes: keep grouped, sorted alphabetically within each group
+SortIncludes: CaseSensitive
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^<[a-z_]+>'          # C++ standard library
+    Priority: 1
+  - Regex: '^<.*\.h>'            # C-style / system headers
+    Priority: 2
+  - Regex: '^".*"'               # project headers
+    Priority: 3
+
+# Misc
+Cpp11BracedListStyle: true
+FixNamespaceComments: true
+DerivePointerAlignment: false
+SortUsingDeclarations: true
