@@ -110,6 +110,17 @@ enum class TokenType
 - **One declaration per line** — avoid `int x, y, *p;`.
 - **Braces required** on every `if` / `for` / `while` body, even single statements — no brace-less one-liners.
 - Prefer `std::string_view` / `std::span` for non-owning parameters over raw pointers or unnecessary copies.
+- Document public functions with multi-line Doxygen-style comments when they are part of the interface. Example:
+
+```cpp
+/**
+ * Returns the destination bits for the given mnemonic.
+ *
+ * @param mnemonic The mnemonic to translate into destination bits.
+ * @return A 3-bit string representing the destination field.
+ */
+std::string dest(const std::string& mnemonic);
+```
 
 ## Formatting enforcement
 
