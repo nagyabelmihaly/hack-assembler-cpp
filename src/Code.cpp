@@ -1,45 +1,26 @@
 #include <stdexcept>
+#include <unordered_map>
 
 #include "Code.hpp"
 
 std::string Code::dest(const std::string& mnemonic)
 {
-    std::string destBits;
-    if (mnemonic.empty())
+    static const std::unordered_map<std::string, std::string> table
     {
-        destBits = "000";
-    }
-    else if (mnemonic == "M")
-    {
-        destBits = "001";
-    }
-    else if (mnemonic == "D")
-    {
-        destBits = "010";
-    }
-    else if (mnemonic == "MD")
-    {
-        destBits = "011";
-    }
-    else if (mnemonic == "A")
-    {
-        destBits = "100";
-    }
-    else if (mnemonic == "AM")
-    {
-        destBits = "101";
-    }
-    else if (mnemonic == "AD")
-    {
-        destBits = "110";
-    }
-    else if (mnemonic == "AMD")
-    {
-        destBits = "111";
-    }
-    else
+        {"", "000"},
+        {"M", "001"},
+        {"D", "010"},
+        {"MD", "011"},
+        {"A", "100"},
+        {"AM", "101"},
+        {"AD", "110"},
+        {"AMD", "111"},
+    };
+
+    auto iter = table.find(mnemonic);
+    if (iter == table.end())
     {
         throw std::invalid_argument("Invalid destination mnemonic: " + mnemonic);
     }
-    return destBits;
+    return iter->second;
 }
