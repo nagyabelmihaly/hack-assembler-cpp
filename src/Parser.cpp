@@ -66,11 +66,11 @@ void Parser::advance()
 CommandType Parser::commandType() const
 {
     /* It is assumed that the command is valid */
-    if (currentCommand_[0] == '@')
+    if (currentCommand_.starts_with('@'))
     {
         return CommandType::A_COMMAND;
     }
-    if (currentCommand_[0] == '(')
+    if (currentCommand_.starts_with('('))
     {
         return CommandType::L_COMMAND;
     }
