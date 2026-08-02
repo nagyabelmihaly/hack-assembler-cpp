@@ -9,29 +9,6 @@
 #include "FilePath.hpp"
 #include "Parser.hpp"
 
-namespace
-{
-/** The number of bits in an A-command except the leading '0'. */
-constexpr size_t A_COMMAND_BITS = 15;
-
-/**
- * Pads the given string on the left with the specified fill character until it reaches the desired total length.
- * 
- * @param str The string to pad.
- * @param totalLength The desired total length of the resulting string.
- * @param fillChar The character to use for padding. Defaults to '0'.
- * @return A new string that is left-padded to the specified total length.
- */
-std::string padLeft(const std::string& str, size_t totalLength, char fillChar = '0')
-{
-    if (str.length() >= totalLength)
-    {
-        return str;
-    }
-    return std::string(totalLength - str.length(), fillChar) + str;
-}
-} /* namespace */
-
 HackAssembler::HackAssembler(const InputPath &inputPath, const OutputPath &outputPath)
     : inputPath_(inputPath.path), outputPath_(outputPath.path)
 {
