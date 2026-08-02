@@ -11,7 +11,7 @@ public:
      * @param mnemonic The mnemonic to translate into destination bits.
      * @return A 3-bit string representing the destination field.
      */
-    static std::string dest(const std::string& mnemonic);
+    [[nodiscard]] static std::string dest(const std::string& mnemonic);
     
     /**
      * Returns the computation bits for the given mnemonic.
@@ -19,7 +19,7 @@ public:
      * @param mnemonic The mnemonic to translate into computation bits.
      * @return A 7-bit string representing the computation field.
      */
-    static std::string comp(const std::string& mnemonic);
+    [[nodiscard]] static std::string comp(const std::string& mnemonic);
     
     /**
      * Returns the jump bits for the given mnemonic.
@@ -27,5 +27,5 @@ public:
      * @param mnemonic The mnemonic to translate into jump bits.
      * @return A 3-bit string representing the jump field.
      */
-    static std::string jump(const std::string& mnemonic);
+    [[nodiscard]] static std::string jump(const std::string& mnemonic);
 };

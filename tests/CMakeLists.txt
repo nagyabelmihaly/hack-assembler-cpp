@@ -8,14 +8,21 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(code_tests
-    CodeTest.cpp
-)
-target_link_libraries(code_tests PRIVATE
-    hack_assembler_lib
-    GTest::gtest_main
-)
-target_include_directories(code_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src)
+function(add_gtest_suite name)
+    string(TOUPPER ${name} name_upper)
+    if(BUILD_${name_upper}_TESTS)
+        add_executable(${name}_tests ${ARGN})
+        target_link_libraries(${name}_tests PRIVATE hack_assembler_lib GTest::gtest_main)
+        target_include_directories(${name}_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src)
+        gtest_discover_tests(${name}_tests)
+    endif()
+endfunction()
 
 include(GoogleTest)
-gtest_discover_tests(code_tests)
+
+# ---- per-suite toggles ----
+option(BUILD_CODE_TESTS "Build Code unit tests" OFF)
+option(BUILD_PARSER_TESTS "Build Parser unit tests" ON)
+
+add_gtest_suite(code CodeTest.cpp)
+add_gtest_suite(parser ParserTest.cpp)

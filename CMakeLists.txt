@@ -8,6 +8,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # ---- core library: everything except main.cpp ----
 add_library(hack_assembler_lib
     src/Code.cpp
+    src/Parser.cpp
 )
 target_include_directories(hack_assembler_lib PUBLIC src)
 target_compile_options(hack_assembler_lib PRIVATE -Wall -Wextra -Wpedantic)
