@@ -64,7 +64,16 @@ void Parser::advance()
 
 CommandType Parser::commandType() const
 {
-    return CommandType::A_COMMAND;
+    /* It is assumed that the command is valid */
+    if (currentCommand_[0] == '@')
+    {
+        return CommandType::A_COMMAND;
+    }
+    if (currentCommand_[0] == '(')
+    {
+        return CommandType::L_COMMAND;
+    }
+    return CommandType::C_COMMAND;
 }
 
 std::string Parser::symbol() const
