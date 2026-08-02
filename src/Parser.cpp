@@ -1,4 +1,5 @@
 #include "Parser.hpp"
+#include <string_view>
 
 namespace
 {
@@ -93,17 +94,55 @@ std::string Parser::symbol() const
 
 std::string Parser::dest() const
 {
-    return "";
+    if (commandType() != CommandType::C_COMMAND)
+    {
+        throw std::runtime_error("dest() called on non-C-command.");
+    }
+    /* If command contains no = then return empty string */
+    size_t eqPos = currentCommand_.find('=');
+    if (eqPos == std::string_view::npos)
+    {
+        return "";
+    }
+    /* Contains = so return what is before it */
+    return currentCommand_.substr(0, eqPos);
 }
 
 std::string Parser::comp() const
 {
-    return "";
+    if (commandType() != CommandType::C_COMMAND)
+    {
+        throw std::runtime_error("comp() called on non-C-command.");
+    }
+    size_t eqPos = currentCommand_.find('=');
+    size_t compStart = 0;
+    if (eqPos != std::string_view::npos)
+    {
+        compStart = eqPos + 1;
+    }
+    size_t semicolonPos = currentCommand_.find(';');
+    size_t compEnd = currentCommand_.size();
+    if (compEnd != std::string_view::npos)
+    {
+        compEnd = semicolonPos;
+    }
+    return currentCommand_.substr(compStart, compEnd - compStart);
 }
 
 std::string Parser::jump() const
 {
-    return "";
+    if (commandType() != CommandType::C_COMMAND)
+    {
+        throw std::runtime_error("jump() called on non-C-command.");
+    }
+    /* If command contains no ; then return empty string */
+    size_t semicolonPos = currentCommand_.find(';');
+    if (semicolonPos == std::string_view::npos)
+    {
+        return "";
+    }
+    /* Contains ; so return what is after it */
+    return currentCommand_.substr(semicolonPos + 1, currentCommand_.size() - semicolonPos - 1);
 }
 
 void Parser::cacheNextCommand() const
