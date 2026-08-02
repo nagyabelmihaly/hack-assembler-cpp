@@ -78,7 +78,17 @@ CommandType Parser::commandType() const
 
 std::string Parser::symbol() const
 {
-    return "";
+    /* If command is an A_COMMAND, then trim the @ prefix */
+    if (commandType() == CommandType::A_COMMAND)
+    {
+        return currentCommand_.substr(1);
+    }
+    /* If command is an L_COMMAND, then trim the ( and ) characters */
+    if (commandType() == CommandType::L_COMMAND)
+    {
+        return currentCommand_.substr(1, currentCommand_.size() - 2);
+    }
+    throw std::runtime_error("Invalid command type for symbol() call.");
 }
 
 std::string Parser::dest() const
