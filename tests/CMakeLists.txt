@@ -22,7 +22,18 @@ include(GoogleTest)
 
 # ---- per-suite toggles ----
 option(BUILD_CODE_TESTS "Build Code unit tests" OFF)
-option(BUILD_PARSER_TESTS "Build Parser unit tests" ON)
+option(BUILD_PARSER_TESTS "Build Parser unit tests" OFF)
+option(BUILD_ASSEMBLER_TESTS "Build Assembler unit tests" ON)
 
 add_gtest_suite(code CodeTest.cpp)
 add_gtest_suite(parser ParserTest.cpp)
+
+if(BUILD_ASSEMBLER_TESTS)
+    add_executable(assembler HackAssemblerTest.cpp)
+    target_link_libraries(assembler PRIVATE hack_assembler_lib GTest::gtest_main)
+    target_compile_definitions(assembler PRIVATE
+        FIXTURES_DIR="${CMAKE_CURRENT_SOURCE_DIR}/fixtures"
+    )
+    target_include_directories(assembler PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src)
+    gtest_discover_tests(assembler)
+endif()

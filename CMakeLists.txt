@@ -9,6 +9,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_library(hack_assembler_lib
     src/Code.cpp
     src/Parser.cpp
+    src/HackAssembler.cpp
 )
 target_include_directories(hack_assembler_lib PUBLIC src)
 target_compile_options(hack_assembler_lib PRIVATE -Wall -Wextra -Wpedantic)
