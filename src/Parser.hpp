@@ -1,14 +1,8 @@
 #pragma once
 
-#include <cstdint>
 #include <istream>
 
-enum class CommandType : std::uint8_t
-{
-    A_COMMAND,  // @Xxx where Xxx is either a symbol or a decimal number
-    C_COMMAND,  // dest=comp;jump
-    L_COMMAND   // (XXX) where XXX is a symbol
-};
+#include "CommandType.hpp"
 
 class Parser
 {
@@ -77,4 +71,21 @@ public:
      * @return The jump part of the current command.
      */
     [[nodiscard]] std::string jump() const;
+
+private:
+    /**
+     * Caches the next command from the input stream into nextCommand_,
+     * and sets isNextCommandCached_ to true, if there is a next command.
+     * If the next command is already cached, does nothing.
+     */
+    void cacheNextCommand() const;
+
+    // Pointer to the input stream from which assembly code is read.
+    std::istream *input_;
+    // The current command being processed, for which symbol(), dest(), comp(), and jump() can be called.
+    std::string currentCommand_;
+    // Cache for the next command to be processed (may or may not contain the next command).
+    mutable std::string nextCommand_;
+    // Flag indicating whether the next command is cached into nextCommand_ or not.
+    mutable bool isNextCommandCached_ = false;
 };
