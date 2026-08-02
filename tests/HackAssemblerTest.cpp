@@ -39,7 +39,7 @@ class HackAssemblerTest : public ::testing::TestWithParam<fs::path>
 {
 };
 
-TEST_P(HackAssemblerTest, MatchesReferenceOutput)
+TEST_P(HackAssemblerTest, MatchesFile)
 {
     const fs::path& asmPath = GetParam();
     fs::path expectedPath = asmPath;

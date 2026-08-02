@@ -21,8 +21,8 @@ endfunction()
 include(GoogleTest)
 
 # ---- per-suite toggles ----
-option(BUILD_CODE_TESTS "Build Code unit tests" OFF)
-option(BUILD_PARSER_TESTS "Build Parser unit tests" OFF)
+option(BUILD_CODE_TESTS "Build Code unit tests" ON)
+option(BUILD_PARSER_TESTS "Build Parser unit tests" ON)
 option(BUILD_ASSEMBLER_TESTS "Build Assembler unit tests" ON)
 
 add_gtest_suite(code CodeTest.cpp)
