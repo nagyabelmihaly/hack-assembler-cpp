@@ -14,10 +14,10 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    InputPath inputPath{argv[1]};
-    OutputPath outputPath{argv[2]};
+    hack::InputPath inputPath{argv[1]};
+    hack::OutputPath outputPath{argv[2]};
 
-    HackAssembler assembler(inputPath, outputPath);
+    hack::HackAssembler assembler(inputPath, outputPath);
 
     std::cout << "Assembling " << inputPath.path << " to " << outputPath.path << "...\n";
 

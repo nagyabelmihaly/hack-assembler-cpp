@@ -47,10 +47,10 @@ TEST_P(HackAssemblerTest, MatchesFile)
 
     fs::path actualPath = fs::temp_directory_path() / (asmPath.stem().string() + "_actual.hack");
 
-    InputPath inputPath{asmPath.string()};
-    OutputPath outputPath{actualPath.string()};
+    hack::InputPath inputPath{asmPath.string()};
+    hack::OutputPath outputPath{actualPath.string()};
 
-    HackAssembler assembler(inputPath, outputPath);
+    hack::HackAssembler assembler(inputPath, outputPath);
     assembler.assemble();
 
     std::string expected = readFile(expectedPath);

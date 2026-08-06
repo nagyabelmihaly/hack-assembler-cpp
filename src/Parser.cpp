@@ -1,8 +1,12 @@
 #include "Parser.hpp"
 #include <string_view>
 
+namespace hack
+{
+
 namespace
 {
+
 /**
  * Trims leading and trailing whitespace from a string_view.
  *
@@ -39,7 +43,8 @@ std::string_view stripComment(std::string_view str)
     }
     return str.substr(0, commentPos);
 }
-} /* namespace */
+
+} // namespace
 
 Parser::Parser(std::istream& input)
     : input_(&input)
@@ -179,3 +184,5 @@ void Parser::cacheNextCommand() const
         return;
     }
 }
+
+} // namespace hack

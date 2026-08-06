@@ -4,6 +4,13 @@
 
 #include "CommandType.hpp"
 
+namespace hack
+{
+
+/**
+ * The Parser class is responsible for parsing assembly code from an input stream.
+ * It provides methods to read commands, determine their types, and extract relevant components.
+ */
 class Parser
 {
 public:
@@ -89,3 +96,5 @@ private:
     // Flag indicating whether the next command is cached into nextCommand_ or not.
     mutable bool isNextCommandCached_ = false;
 };
+
+} // namespace hack

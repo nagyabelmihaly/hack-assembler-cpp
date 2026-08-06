@@ -9,6 +9,9 @@
 #include "FilePath.hpp"
 #include "Parser.hpp"
 
+namespace hack
+{
+
 HackAssembler::HackAssembler(const InputPath &inputPath, const OutputPath &outputPath)
     : inputPath_(inputPath.path), outputPath_(outputPath.path)
 {
@@ -65,3 +68,5 @@ void HackAssembler::assemble()
         }
     }
 }
+
+} // namespace hack

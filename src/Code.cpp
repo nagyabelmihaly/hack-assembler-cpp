@@ -3,6 +3,9 @@
 
 #include "Code.hpp"
 
+namespace hack
+{
+
 std::string Code::dest(const std::string& mnemonic)
 {
     static const std::unordered_map<std::string, std::string> table
@@ -88,3 +91,5 @@ std::string Code::jump(const std::string& mnemonic)
     }
     return iter->second;
 }
+
+} // namespace hack

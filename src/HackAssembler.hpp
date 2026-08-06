@@ -4,6 +4,13 @@
 
 #include "FilePath.hpp"
 
+namespace hack
+{
+
+/**
+ * The HackAssembler class is responsible for assembling Hack assembly code into binary machine code.
+ * It takes an input .asm file and produces an output .hack file.
+ */
 class HackAssembler
 {
 public:
@@ -24,3 +31,5 @@ private:
     std::string inputPath_;
     std::string outputPath_;
 };
+
+} // namespace hack

@@ -2,6 +2,13 @@
 
 #include <string>
 
+namespace hack
+{
+
+/**
+ * The Code class is responsible for translating Hack assembly mnemonics into their corresponding binary codes.
+ * It provides static methods to retrieve the binary representations of destination, computation, and jump fields.
+ */
 class Code
 {
 public:
@@ -29,3 +36,5 @@ public:
      */
     [[nodiscard]] static std::string jump(const std::string& mnemonic);
 };
+
+} // namespace hack

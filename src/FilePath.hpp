@@ -2,6 +2,9 @@
 
 #include <string>
 
+namespace hack
+{
+
 /**
  * Represents the path to an input file.
  */
@@ -19,3 +22,5 @@ struct OutputPath
     /** The path to the output file. */
     std::string path;
 };
+
+} // namespace hack
