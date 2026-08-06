@@ -10,6 +10,7 @@ add_library(hack_assembler_lib
     src/Code.cpp
     src/Parser.cpp
     src/HackAssembler.cpp
+    src/SymbolTable.cpp
 )
 target_include_directories(hack_assembler_lib PUBLIC src)
 target_compile_options(hack_assembler_lib PRIVATE -Wall -Wextra -Wpedantic)

@@ -23,10 +23,12 @@ include(GoogleTest)
 # ---- per-suite toggles ----
 option(BUILD_CODE_TESTS "Build Code unit tests" ON)
 option(BUILD_PARSER_TESTS "Build Parser unit tests" ON)
-option(BUILD_ASSEMBLER_TESTS "Build Assembler unit tests" ON)
+option(BUILD_ASSEMBLER_TESTS "Build HackAssembler unit tests" ON)
+option(BUILD_SYMBOL_TABLE_TESTS "Build SymbolTable unit tests" ON)
 
 add_gtest_suite(code CodeTest.cpp)
 add_gtest_suite(parser ParserTest.cpp)
+add_gtest_suite(symbol_table SymbolTableTest.cpp)
 
 if(BUILD_ASSEMBLER_TESTS)
     add_executable(assembler HackAssemblerTest.cpp)
