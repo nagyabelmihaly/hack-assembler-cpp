@@ -1,4 +1,6 @@
 #include "Parser.hpp"
+
+#include <stdexcept>
 #include <string_view>
 
 namespace hack

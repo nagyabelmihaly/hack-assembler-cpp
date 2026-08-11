@@ -1,26 +1,30 @@
+#include <stdexcept>
+
 #include "SymbolTable.hpp"
 
 namespace hack
 {
 
-SymbolTable::SymbolTable()
-{
-    // TODO: implement
-}
+SymbolTable::SymbolTable() = default;
 
 void SymbolTable::addEntry(const std::string& symbol, int address)
 {
-    // TODO: implement
+    symbolTable_[symbol] = address;
 }
 
 bool SymbolTable::contains(const std::string& symbol) const
 {
-    // TODO: implement
+    return symbolTable_.contains(symbol);
 }
 
 int SymbolTable::getAddress(const std::string& symbol) const
 {
-    // TODO: implement
+    auto iter = symbolTable_.find(symbol);
+    if (iter != symbolTable_.end())
+    {
+        return iter->second;
+    }
+    throw std::runtime_error("Symbol not found.");
 }
 
 } // namespace hack

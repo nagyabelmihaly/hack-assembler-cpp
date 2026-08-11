@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <unordered_map>
 
 namespace hack
 {
@@ -40,6 +41,10 @@ public:
      * @return The integer address associated with the symbol.
      */
     [[nodiscard]] int getAddress(const std::string& symbol) const;
+
+private:
+    /// The underlying data structure for storing symbol-address mappings.
+    std::unordered_map<std::string, int> symbolTable_; 
 };
 
 } // namespace hack
