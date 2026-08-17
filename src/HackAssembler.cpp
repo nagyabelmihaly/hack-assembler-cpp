@@ -23,15 +23,13 @@ void HackAssembler::assemble()
     std::ifstream inputFile(inputPath_);
     if (!inputFile.is_open())
     {
-        std::cerr << "Error: Could not open input file: " << inputPath_ << '\n';
-        return;
+        throw std::runtime_error("Could not open input file: " + inputPath_);
     }
 
     std::ofstream outputFile(outputPath_);
     if (!outputFile.is_open())
     {
-        std::cerr << "Error: Could not open output file: " << outputPath_ << '\n';
-        return;
+        throw std::runtime_error("Could not open output file: " + outputPath_);
     }
 
     Parser parser(inputFile);
