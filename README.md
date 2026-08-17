@@ -86,6 +86,49 @@ private:
 }  // namespace hasm
 ```
 
+## Includes
+
+Headers must always start with `#pragma once`.
+Include order is strict and well-defined: includes are categorized into 4 distinct groups, which are required to be in this exact order:
+1. Own header of `.cpp` file
+2. Standard library headers
+3. External / third-party headers
+4. Internal project headers
+The groups must be separated with one empty line. In each group, alphabetical order is required.
+
+Examples:
+```cpp
+// HackAssembler.hpp
+#pragma once
+
+#include <string>
+
+#include "FilePath.hpp"
+
+// HackAssembler.cpp
+#include "HackAssembler.hpp"
+
+#include <format>
+#include <fstream>
+#include <iostream>
+#include <string>
+
+#include "Code.hpp"
+#include "CommandType.hpp"
+#include "FilePath.hpp"
+#include "Parser.hpp"
+
+// HackAssemblerTest.cpp
+#include <filesystem>
+#include <fstream>
+#include <sstream>
+#include <vector>
+
+#include <gtest/gtest.h>
+
+#include "HackAssembler.hpp"
+```
+
 ## Enums
 
 Always `enum class`, never a plain `enum` — avoids namespace pollution and implicit int conversion.

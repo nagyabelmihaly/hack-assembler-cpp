@@ -1,6 +1,6 @@
-#include <stdexcept>
-
 #include "SymbolTable.hpp"
+
+#include <stdexcept>
 
 namespace hack
 {

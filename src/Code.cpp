@@ -1,7 +1,7 @@
+#include "Code.hpp"
+
 #include <stdexcept>
 #include <unordered_map>
-
-#include "Code.hpp"
 
 namespace hack
 {

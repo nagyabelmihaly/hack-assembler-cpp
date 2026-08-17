@@ -1,9 +1,10 @@
+#include "HackAssembler.hpp"
+
 #include <format>
 #include <fstream>
 #include <iostream>
 #include <string>
 
-#include "HackAssembler.hpp"
 #include "Code.hpp"
 #include "CommandType.hpp"
 #include "FilePath.hpp"
