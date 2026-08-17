@@ -94,6 +94,7 @@ Include order is strict and well-defined: includes are categorized into 4 distin
 2. Standard library headers
 3. External / third-party headers
 4. Internal project headers
+
 The groups must be separated with one empty line. In each group, alphabetical order is required.
 
 Examples:
