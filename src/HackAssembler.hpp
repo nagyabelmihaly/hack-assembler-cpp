@@ -3,6 +3,7 @@
 #include <string>
 
 #include "FilePath.hpp"
+#include "SymbolTable.hpp"
 
 namespace hack
 {
@@ -28,8 +29,13 @@ public:
     void assemble();
 
 private:
+    void initializeSymbolTable();
+    void firstPass();
+    void secondPass();
+
     std::string inputPath_;
     std::string outputPath_;
+    SymbolTable symbolTable_;
 };
 
 } // namespace hack
