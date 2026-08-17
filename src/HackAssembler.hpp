@@ -1,8 +1,10 @@
 #pragma once
 
 #include <string>
+#include <fstream>
 
 #include "FilePath.hpp"
+#include "Parser.hpp"
 #include "SymbolTable.hpp"
 
 namespace hack
@@ -30,8 +32,8 @@ public:
 
 private:
     void initializeSymbolTable();
-    void firstPass();
-    void secondPass();
+    void firstPass(Parser &parser);
+    void secondPass(Parser &parser, std::ofstream &outputFile);
 
     std::string inputPath_;
     std::string outputPath_;
